@@ -1,17 +1,29 @@
 {
   "name": "royaltytheme",
   "displayName": "Royalty Theme",
-  "description": "Color theme using purple and gold",
-  "version": "2.2.0",
+  "description": "A deep-plum dark theme in purple and gold. Every color is verified against WCAG AA.",
+  "version": "3.0.0",
   "publisher": "alcash55",
   "repository": {
     "type": "git",
     "url": "https://github.com/alcash55/Royalty-VS-Code-Theme"
   },
+  "bugs": {
+    "url": "https://github.com/alcash55/Royalty-VS-Code-Theme/issues"
+  },
+  "homepage": "https://github.com/alcash55/Royalty-VS-Code-Theme#readme",
   "icon": "crown.jpg",
+  "galleryBanner": {
+    "color": "#1A1426",
+    "theme": "dark"
+  },
   "keywords": [
     "theme",
     "dark theme",
+    "purple",
+    "gold",
+    "accessible",
+    "wcag",
     "alcash55",
     "royalty"
   ],
@@ -21,6 +33,13 @@
   "categories": [
     "Themes"
   ],
+  "scripts": {
+    "build": "node scripts/build-theme.mjs",
+    "check": "node scripts/check-contrast.mjs",
+    "check:verbose": "node scripts/check-contrast.mjs --verbose",
+    "preview": "node scripts/render-preview.mjs",
+    "verify": "npm run build && npm run check"
+  },
   "contributes": {
     "themes": [
       {

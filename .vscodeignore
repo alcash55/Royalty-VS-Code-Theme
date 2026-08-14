@@ -1,4 +1,9 @@
 .vscode/**
 .vscode-test/**
 .gitignore
+.gitattributes
 vsc-extension-quickstart.md
+
+# Build tooling — the generated theme JSON is what ships.
+scripts/**
+assets/preview.html
