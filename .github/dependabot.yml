@@ -1,0 +1,9 @@
+# The theme has zero npm dependencies (see package.json), so the only thing
+# that can drift here is the pinned actions in .github/workflows/ci.yml.
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
