@@ -1,0 +1,43 @@
+name: CI
+
+# Runs the theme's own contrast gate on every PR. `npm run verify` (build +
+# check) is the same command the README already documents as the source of
+# truth for "174 color pairs checked, 0 failures" -- this just makes sure
+# that check runs before a regression reaches main instead of only when a
+# human remembers to run it locally.
+#
+# This repo has no `lint` script or ESLint config and no `test` script
+# (its correctness gate is the contrast checker, not unit tests), and it
+# has zero npm dependencies, so this calls npm directly rather than the
+# shared ac-composite-actions/node-ci.yml reusable workflow -- that
+# workflow models install/lint/typecheck/test/build, and shoehorning
+# "check" into one of those four names would either skip the one step
+# that matters here or misdescribe what actually runs.
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: verify (build + contrast check)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # No package-lock.json is committed (the project has zero npm
+      # dependencies), so `npm ci` has nothing to lock against -- npm
+      # install is the correct command here, not a fallback for a missing
+      # lockfile.
+      - name: Install dependencies
+        run: npm install
+
+      - name: Verify (build theme + check contrast)
+        run: npm run verify
