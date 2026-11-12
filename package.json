@@ -4,6 +4,7 @@
   "description": "A deep-plum dark theme in purple and gold. Every color is verified against WCAG AA.",
   "version": "3.0.0",
   "publisher": "alcash55",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/alcash55/Royalty-VS-Code-Theme"
